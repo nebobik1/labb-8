@@ -33,7 +33,7 @@ namespace Lab8
                    $"Опыт: {ExperienceYears} лет, Бонус: {CalculateBonus():C}";
         }
 
-        public override void DisplayInfo()
+        public void DisplayInfo()
         {
             Console.WriteLine(ToString());
         }

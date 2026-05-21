@@ -33,9 +33,6 @@ namespace Lab8
                    $"Команда: {TeamSize} чел., Бонус: {CalculateBonus():C}";
         }
 
-        public override void DisplayInfo()
-        {
-            Console.WriteLine(ToString());
-        }
+
     }
 }

@@ -37,7 +37,7 @@ namespace Lab8
                    $"Бонус: {CalculateBonus():C}";
         }
 
-        public override void DisplayInfo()
+        public void DisplayInfo()
         {
             Console.WriteLine(ToString());
         }

@@ -23,7 +23,7 @@ namespace Lab8
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Ошибка! Введите целое число (без букв).");
+                    Console.WriteLine("Ошибка! Введите целое число.");
                 }
                 catch (Exception ex)
                 {
@@ -52,12 +52,12 @@ namespace Lab8
             }
         }
 
-        public void AddItemInteractive()
+        public void AddItem()
         {
-            Console.WriteLine("\nВыберите тип добавляемого объекта (в списке только те, кто реализует интерфейс):");
+            Console.WriteLine("\nВыберите тип объекта:");
             Console.WriteLine("1. Backend-разработчик (BackendDeveloper)");
             Console.WriteLine("2. Project-менеджер (ProjectManager)");
-            Console.WriteLine("3. Другой класс: Отдел компании (Department)");
+            Console.WriteLine("3. Отдел компании (Department)");
 
             int type = ReadInt("Ваш выбор: ");
 
@@ -84,10 +84,8 @@ namespace Lab8
                         Console.Write("Язык программирования: ");
                         string backLang = Console.ReadLine() ?? "Unknown";
                         int backExp = ReadInt("Опыт работы (лет): ");
-                        Console.Write("Технология БД: ");
-                        string db = Console.ReadLine() ?? "Unknown";
                         int cloud = ReadInt("Знает облачные технологии (1-Да, 0-Нет): ");
-                        items.Add(new BackendDeveloper(name, salary, pos, backLang, backExp, db, cloud == 1));
+                        items.Add(new BackendDeveloper(name, salary, pos, backLang, backExp, cloud == 1));
                         break;
                     case 2:
                         int pmTeamSize = ReadInt("Размер команды: ");
@@ -98,14 +96,14 @@ namespace Lab8
                         items.Add(new ProjectManager(name, salary, pos, pmTeamSize, pmDept, projects, budget));
                         break;
                     default:
-                        Console.WriteLine("Неверный выбор. Ничего не добавлено.");
+                        Console.WriteLine("Неверный выбор.");
                         return;
                 }
                 Console.WriteLine("Сотрудник успешно добавлен!");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Произошла ошибка при добавлении: {ex.Message}");
+                Console.WriteLine($"Произошла ошибка: {ex.Message}");
             }
         }
 
@@ -117,15 +115,12 @@ namespace Lab8
                 return;
             }
 
-            Console.WriteLine("\n" + new string('=', 70));
-            Console.WriteLine("СОДЕРЖИМОЕ КОЛЛЕКЦИИ");
-            Console.WriteLine(new string('=', 70));
+            Console.WriteLine("Содержимое коллекции");
 
             for (int i = 0; i < items.Count; i++)
             {
                 Console.Write($"[{i}] ");
                 items[i].DisplayInfo();
-                Console.WriteLine(new string('-', 50));
             }
         }
 
@@ -133,28 +128,27 @@ namespace Lab8
         {
             if (items.Count == 0)
             {
-                Console.WriteLine("Коллекция пуста, реверс невозможен.");
+                Console.WriteLine("Коллекция пуста.");
                 return;
             }
 
-            // Вызываем дефолтный метод интерфейса
             foreach (var item in items)
             {
                 item.ReverseName();
             }
-            Console.WriteLine("\nИмена всех объектов успешно перевернуты задом наперед!");
+            Console.WriteLine("\nИмена объектов успешно перевернуты");
         }
 
-        public void DeleteItemInteractive()
+        public void DeleteItem()
         {
             if (items.Count == 0)
             {
-                Console.WriteLine("Коллекция пуста, удалять нечего.");
+                Console.WriteLine("Коллекция пуста.");
                 return;
             }
 
             PrintAll();
-            int index = ReadInt("Введите индекс элемента (в квадратных скобках []) для удаления: ");
+            int index = ReadInt("Введите индекс элемента: ");
 
             try
             {
@@ -171,12 +165,12 @@ namespace Lab8
             }
         }
 
-        public void FillDummyData()
+        public void FillData()
         {
             items.Add(new Department("IT Отдел", 25));
-            items.Add(new BackendDeveloper("Иван", 2500, Position.Junior, "C#", 4, "PostgreSQL", true));
+            items.Add(new BackendDeveloper("Иван", 2500, Position.Junior, "C#", 4, true));
             items.Add(new ProjectManager("Анна", 3500, Position.Senior, 12, "Разработка", 4, 100000));
-            Console.WriteLine("Коллекция заполнена тестовыми данными.");
+            Console.WriteLine("Коллекция заполнена.");
         }
     }
 }

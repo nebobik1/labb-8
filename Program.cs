@@ -16,7 +16,7 @@ namespace Lab8
                 Console.WriteLine("2. Вывести все элементы коллекции");
                 Console.WriteLine("3. Добавить элемент вручную");
                 Console.WriteLine("4. Удалить элемент по индексу");
-                Console.WriteLine("5. Сделать реверс названий объектов (по заданию)");
+                Console.WriteLine("5. Сделать реверс названий объектов");
                 Console.WriteLine("0. Выход");
                 Console.Write("Выбор: ");
 
@@ -25,20 +25,20 @@ namespace Lab8
                 switch (choice)
                 {
                     case "1":
-                        manager.FillDummyData();
+                        manager.FillData();
                         break;
                     case "2":
                         manager.PrintAll();
                         break;
                     case "3":
-                        manager.AddItemInteractive();
+                        manager.AddItem();
                         break;
                     case "4":
-                        manager.DeleteItemInteractive();
+                        manager.DeleteItem();
                         break;
                     case "5":
                         manager.ReverseNames();
-                        manager.PrintAll(); // Сразу выводим, чтобы препод увидел результат
+                        manager.PrintAll(); 
                         break;
                     case "0":
                         exit = true;

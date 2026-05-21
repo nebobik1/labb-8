@@ -36,7 +36,6 @@ namespace Lab8
 
         public abstract double CalculateBonus();
         public abstract override string ToString();
-        public abstract void DisplayInfo();
 
         public virtual double CalculateAnnualSalary()
         {
